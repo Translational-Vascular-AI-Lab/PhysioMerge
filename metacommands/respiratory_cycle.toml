@@ -1,0 +1,71 @@
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "savgol"
+in_channel = "co2"
+window = "500ms"
+out_channel = "mid1"
+out = "{name}"
+
+
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "sliding_standard"
+in_channel = "mid1"
+time = "8s"
+out_channel = "{index_channel}"
+out = "{name}"
+
+# This meams a maximum of 60 breaths per min
+[[command]]
+class_name = "Peaks"
+in = "{name}"
+in_channel = "{index_channel}"
+difference = "1s"
+height = 0.5
+format = "max"
+out = "{name}"
+
+[[command]]
+class_name = "partition"
+in = "{name}"
+index = "{index_channel}"
+in_channel = "pco2"
+out_channel = "pco2_wave"
+out = "{name}"
+
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "pco2_wave"
+format = "max"
+out_channel = "petco2_internal"
+out = "{name}"
+
+[[command]]
+class_name = "Arithmetic"
+in = "{name}"
+in_channel = "petco2_internal"
+format = "*"
+num = 7.13
+out_channel = "petco2_internal"
+out = "{name}"
+
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "pco2_wave"
+format = "period"
+out_channel = "petco2_period_internal"
+out = "{name}"
+
+
+[[command]]
+class_name = "expand"
+in = "{name}"
+in_channel = "petco2_internal"
+weights = "petco2_period_internal"
+format = "mean"
+out_channel = "{out_channel_name}"
+out = "{name}"

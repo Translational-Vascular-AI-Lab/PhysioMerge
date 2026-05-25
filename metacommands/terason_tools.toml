@@ -1,0 +1,444 @@
+#####################################################################
+# PARTITION
+#####################################################################
+ 
+ 
+#####################################################################
+# Arithmetic
+#####################################################################
+[Making_area]
+[[command]]
+class_name = "arithmetic"
+in = "{name}"
+out = "{name}"
+in_channel = "{diameter_wave}"
+in_channel_2 = "{diameter_wave}"
+out_channel = "diameter2_wave"
+format = "*"
+ 
+[[command]]
+class_name = "arithmetic"
+in = "{name}"
+out = "{name}"
+in_channel = "diameter2_wave"
+out_channel = "area_wave"
+format = "*"
+num = 0.7854 # pi/4
+ 
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "{velocity_wave}"
+in_channel_2 =  "area_wave"
+format = "*"
+out_channel = "flow_wave"
+out = "{name}"
+ 
+ 
+#####################################################################
+#DIAMETER
+#####################################################################
+# Diameter
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{diameter_wave}"
+format = "max"
+out_channel = "sys_diameter_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{diameter_wave}"
+format = "mean"
+out_channel = "mean_diameter_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{diameter_wave}"
+format = "min"
+out_channel = "dias_diameter_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{diameter_wave}"
+format = "amplitude"
+out_channel = "amp_diameter_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{diameter_wave}"
+format = "period"
+out_channel = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sys_diameter_wave"
+format = "mean"
+out_channel = "sys_diameter"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_diameter_wave"
+format = "mean"
+out_channel = "mean_diameter"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "dias_diameter_wave"
+format = "mean"
+out_channel = "dias_diameter"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "amp_diameter_wave"
+format = "mean"
+out_channel = "amp_diameter"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+ 
+#####################################################################
+# AREA
+#####################################################################
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "area_wave"
+format = "max"
+out_channel = "sys_area_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "area_wave"
+format = "mean"
+out_channel = "mean_area_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "area_wave"
+format = "min"
+out_channel = "dias_area_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "area_wave"
+format = "amplitude"
+out_channel = "amp_area_wave"
+out = "{name}"
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sys_area_wave"
+format = "mean"
+out_channel = "sys_area"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_area_wave"
+format = "mean"
+out_channel = "mean_area"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "dias_area_wave"
+format = "mean"
+out_channel = "dias_area"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "amp_area_wave"
+format = "mean"
+out_channel = "amp_area"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+#####################################################################
+# VELOCITY
+#####################################################################
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{velocity_wave}"
+format = "max"
+out_channel = "sys_velocity_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{velocity_wave}"
+format = "mean"
+out_channel = "mean_velocity_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{velocity_wave}"
+format = "min"
+out_channel = "dias_velocity_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{velocity_wave}"
+format = "amplitude"
+out_channel = "amp_velocity_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "amp_velocity_wave"
+in_channel_2 =  "mean_velocity_wave"
+format = "/"
+out_channel = "pi_velocity_wave"
+out = "{name}"
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "amp_velocity_wave"
+in_channel_2 =  "sys_velocity_wave"
+format = "/"
+out_channel = "ri_velocity_wave"
+out = "{name}"
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "sys_velocity_wave"
+in_channel_2 =  "dias_velocity_wave"
+format = "/"
+out_channel = "sd_velocity_wave"
+out = "{name}"
+ 
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sys_velocity_wave"
+format = "mean"
+out_channel = "sys_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_velocity_wave"
+format = "mean"
+out_channel = "mean_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "dias_velocity_wave"
+format = "mean"
+out_channel = "dias_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "amp_velocity_wave"
+format = "mean"
+out_channel = "amp_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "pi_velocity_wave"
+format = "mean"
+out_channel = "pi_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "ri_velocity_wave"
+format = "mean"
+out_channel = "ri_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sd_velocity_wave"
+format = "mean"
+out_channel = "sd_velocity"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+#####################################################################
+# FLOW
+#####################################################################
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "flow_wave"
+format = "max"
+out_channel = "sys_flow_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "flow_wave"
+format = "mean"
+out_channel = "mean_flow_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "flow_wave"
+format = "min"
+out_channel = "dias_flow_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "flow_wave"
+format = "amplitude"
+out_channel = "amp_flow_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "amp_flow_wave"
+in_channel_2 =  "mean_flow_wave"
+format = "/"
+out_channel = "pi_flow_wave"
+out = "{name}"
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "amp_flow_wave"
+in_channel_2 =  "sys_flow_wave"
+format = "/"
+out_channel = "ri_flow_wave"
+out = "{name}"
+[[command]]
+class_name = "Arithmetic"
+in =  "{name}"
+in_channel = "sys_flow_wave"
+in_channel_2 =  "dias_flow_wave"
+format = "/"
+out_channel = "sd_flow_wave"
+out = "{name}"
+ 
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sys_flow_wave"
+format = "mean"
+out_channel = "sys_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_flow_wave"
+format = "mean"
+out_channel = "mean_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "dias_flow_wave"
+format = "mean"
+out_channel = "dias_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "amp_flow_wave"
+format = "mean"
+out_channel = "amp_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "pi_flow_wave"
+format = "mean"
+out_channel = "pi_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "ri_flow_wave"
+format = "mean"
+out_channel = "ri_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"
+ 
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "sd_flow_wave"
+format = "mean"
+out_channel = "sd_flow"
+mask = "{diameter_mask_name}"
+weights = "period_diameter_wave"
+out = "{name}"

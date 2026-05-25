@@ -1,0 +1,44 @@
+# Cardiac Output
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{co_channel_name}"
+format = "median"
+out_channel = "mean_co_wave"
+out = "{name}"
+
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{co_channel_name}"
+format = "period"
+out_channel = "period_co_wave"
+out = "{name}"
+
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_co_wave"
+format = "mean"
+out_channel = "cardiac_output"
+mask = "{mask_name}"
+weights = "period_co_wave"
+out = "{name}"
+
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "{sv_channel_name}"
+format = "median"
+out_channel = "mean_sv_wave"
+out = "{name}"
+
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "mean_sv_wave"
+format = "mean"
+out_channel = "stroke_volume"
+mask = "{mask_name}"
+weights = "period_co_wave"
+out = "{name}"

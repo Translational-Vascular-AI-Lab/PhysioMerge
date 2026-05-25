@@ -1,0 +1,16 @@
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "kalman"
+in_channel = "{channel_name}"
+out_channel = "{channel_name}"
+out = "{name}"
+
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "savgol"
+in_channel = "{channel_name}"
+window = "50ms"
+out_channel = "{channel_name}"
+out = "{name}"

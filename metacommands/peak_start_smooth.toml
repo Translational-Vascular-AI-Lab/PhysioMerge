@@ -1,0 +1,26 @@
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "savgol"
+in_channel  = "{channel_name}"
+window = "125ms"
+out_channel = "mid1"
+out = "{name}"
+
+[[command]]
+class_name = "filter"
+in = "{name}"
+function = "sliding_standard"
+in_channel  = "mid1"
+time = "5s"
+out_channel = "{index_channel}"
+out = "{name}"
+
+[[command]]
+class_name = "Peaks"
+in = "{name}"
+in_channel  = "{index_channel}"
+difference = "0.25s"
+prominence = 0.5
+format = "max"
+out = "{name}"

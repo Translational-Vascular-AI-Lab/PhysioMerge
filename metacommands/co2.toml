@@ -1,0 +1,31 @@
+[[command]]
+class_name = "partition"
+in = "{name}"
+index = "{index_channel}"
+in_channel = "{channel_name}"
+out_channel = "petco2_wave"
+out = "{name}"
+
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "petco2_wave"
+format = "mean"
+out_channel = "petco2_wave"
+out = "{name}"
+[[command]]
+class_name = "measurement"
+in = "{name}"
+in_channel = "petco2_wave"
+format = "period"
+out_channel = "petco2_wave_period"
+out = "{name}"
+
+[[command]]
+class_name = "aggregate"
+in = "{name}"
+in_channel = "petco2_wave"
+format = "mean"
+weights = "petco2_wave_period"
+out_channel = "{out_channel}"
+out = "{name}"

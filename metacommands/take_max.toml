@@ -1,0 +1,31 @@
+[[command]]
+class_name = "take"
+in =  "{name}"
+out = "{name}"
+in_channel = "{channel}"
+out_channel = "take_consecs"
+mask_name= "{mask_name}"
+consecutive = true
+maximum = false
+minimum = true
+time = "{time}"
+
+[[command]]
+class_name = "take"
+in =  "{name}"
+out = "{name}"
+in_channel = "{channel}"
+out_channel = "take_nonconsecs"
+mask_name= "{mask_name}"
+consecutive = false
+maximum = false
+minimum = true
+time = "{time}"
+
+
+[[command]]
+class_name = "priority"
+in =  "{name}"
+out = "{name}"
+channels = ["take_consecs", "take_nonconsecs"]
+out_channel = "{resultant}"
