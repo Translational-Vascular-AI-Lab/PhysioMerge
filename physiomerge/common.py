@@ -264,7 +264,7 @@ class Command:
             fh = logging.FileHandler(Command.log_file_path)
             fh.setLevel(logging.DEBUG)
             formatter = logging.Formatter(
-                "%(asctime)s - %(levelname)s: %(message)s", datefmt="%d/%m/%Y %H:%M:%S"
+                "%(asctime)s - %(levelname)s: %(message)s", datefmt="%Y_%m_%d %H:%M:%S"
             )
             fh.setFormatter(formatter)
             Command.session_logger.addHandler(fh)
